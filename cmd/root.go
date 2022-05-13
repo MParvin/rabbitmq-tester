@@ -38,7 +38,7 @@ var rootCmd = &cobra.Command{
   rabbitmq-tester -c config.yaml receive -q queue`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("send and receive messages")
+		fmt.Println("send and receive messages to rabbitmq")
 	},
 }
 
