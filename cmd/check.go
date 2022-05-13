@@ -16,8 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
+	L "github.com/mparvin/rabbitmq-tester/lib"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -30,8 +29,8 @@ var checkCmd = &cobra.Command{
 
 rabbitmq-test -c /PATH/TO/CONFIG_FILE check`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("check called")
-		fmt.Println("RabbitMQ IP:", viper.GetString("rabbit_srv1.ip"))
+		L.Send(viper.GetString("RabbitHost"), viper.GetString("Queue"), viper.GetString("Message"))
+		L.Receive(viper.GetString("RabbitHost"), viper.GetString("Queue"), viper.GetString("Message"))
 	},
 }
 
