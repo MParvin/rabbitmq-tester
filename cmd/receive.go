@@ -16,8 +16,6 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
 	L "github.com/mparvin/rabbitmq-tester/lib"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
