@@ -19,30 +19,23 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
-// testCmd represents the test command
-var testCmd = &cobra.Command{
-	Use:   "test",
+// checkCmd represents the chck command
+var checkCmd = &cobra.Command{
+	Use:   "check",
 	Short: "This command will send messages to a queue, then receive them",
 	Long: `To use this command, you must first create a queue:
 
-rabbitmq-test -c /PATH/TO/CONFIG_FILE test`,
+rabbitmq-test -c /PATH/TO/CONFIG_FILE check`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("test called")
+		fmt.Println("check called")
+		fmt.Println("RabbitMQ IP:", viper.GetString("rabbit_srv1.ip"))
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(testCmd)
+	rootCmd.AddCommand(checkCmd)
 
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// testCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// testCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
