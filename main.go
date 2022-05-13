@@ -15,8 +15,10 @@ limitations under the License.
 */
 package main
 
-import "github.com/mparvin/rabbitmq-tester/cmd"
+import (
+	"github.com/mparvin/rabbitmq-tester/cmd"
+)
 
 func main() {
-  cmd.Execute()
+	cmd.Execute()
 }
