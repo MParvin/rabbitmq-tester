@@ -16,9 +16,9 @@ limitations under the License.
 package cmd
 
 import (
-	"fmt"
-
+	L "github.com/mparvin/rabbitmq-tester/lib"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // sendCmd represents the send command
@@ -29,7 +29,7 @@ var sendCmd = &cobra.Command{
 
 rabbitmq-test -c /PATH/TO/CONFIG_FILE send`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("send called")
+		L.Send(viper.GetString("RabbitHost"), viper.GetString("Queue"), viper.GetString("Message"))
 	},
 }
 
