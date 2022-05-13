@@ -80,6 +80,11 @@ func Receive(rabbithost string, queue string, message string) {
 	)
 	failOnError(err, "Failed to register a consumer")
 
+	// exit if no messages
+	if len(msgs) == 0 {
+		log.Fatal(" [x] No messages")
+	}
+
 	for d := range msgs {
 		log.Printf(" [x] Received %s", d.Body)
 		if string(d.Body) == message {
