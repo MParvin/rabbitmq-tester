@@ -18,7 +18,9 @@ package cmd
 import (
 	"fmt"
 
+	L "github.com/mparvin/rabbitmq-tester/lib"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // receiveCmd represents the receive command
@@ -30,6 +32,9 @@ var receiveCmd = &cobra.Command{
 rabbitmq-test -c /PATH/TO/CONFIG_FILE receive`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("receive called")
+		fmt.Println("RabbitMQ IP:", viper.GetString("rabbit_srv1.ip"))
+		L.Receive(viper.GetString("RabbitHost"), viper.GetString("Queue"), viper.GetString("Message"))
+
 	},
 }
 
