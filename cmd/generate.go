@@ -36,14 +36,6 @@ rabbitmq-test -c /PATH/TO/NEW_CONFIG_FILE generate -a`,
 
 func init() {
 	rootCmd.AddCommand(generateCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// generateCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
 	generateCmd.Flags().BoolP("append", "a", false, "Append to this config file, usefull if you want to add multiple rabbitmq configurations")
+
 }
