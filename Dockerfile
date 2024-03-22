@@ -14,6 +14,6 @@ FROM alpine:3.10
 
 WORKDIR /app
 
-COPY --from=builder /app/rabbit-tester .
+COPY --from=builder /app/rabbitmq-tester .
 
-ENTRYPOINT ["/app/rabbit-tester"]
+ENTRYPOINT ["/app/rabbitmq-tester"]
