@@ -8,11 +8,12 @@ RUN go mod tidy
 
 COPY . .
 
-RUN CGO_ENABLED=0 go build -o rabbit-tester
-
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o rabbitmq-tester .
 
 FROM alpine:3.10
 
+WORKDIR /app
+
 COPY --from=builder /app/rabbit-tester .
 
-ENTRYPOINT ["./rabbit-tester"]
+ENTRYPOINT ["/app/rabbit-tester"]
